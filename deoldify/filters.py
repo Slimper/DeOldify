@@ -100,7 +100,7 @@ class ColorizerFilter(BaseFilter):
         # do a black and white transform first to get better luminance values
         orig_yuv = cv2.cvtColor(orig_np, cv2.COLOR_BGR2YUV)
         hires = np.copy(orig_yuv)
-        hires[:, :, 1:3] = color_yuv[:, 1:3, :]
+        hires[:, 1:3, :] = color_yuv[:, 1:3, :]
         final = cv2.cvtColor(hires, cv2.COLOR_YUV2BGR)
         final = PilImage.fromarray(final)
         return final
